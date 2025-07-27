@@ -1,0 +1,38 @@
+
+---
+title: "Sex-Informed Prognostic Score: Results Overview"
+author: "Mauricio Cuello Fredes"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+🔬 **Overview**
+
+This document summarizes the prognostic performance of the sex-informed 10-gene score derived using LASSO Cox regression on z-score normalized expression data. The score was tested across multiple cancer types and stratified patients into high- and low-risk groups based on survival outcomes.
+
+📊 **Score Formulas**
+
+10-Gene Score (including CGB8): `Score_10 = β1·Gene1 + β2·Gene2 + ... + β10·Gene10`  
+9-Gene Score (excluding CGB8): `Score_9 = β1·Gene1 + β2·Gene2 + ... + β9·Gene9`
+
+📈 **Kaplan–Meier Survival Curves**
+
+```{r, results='asis'}
+knitr::include_graphics("~/Desktop/OS_10gene.pdf")
+knitr::include_graphics("~/Desktop/PFI_10gene.pdf")
+```
+
+📌 **Reproducibility**
+
+- Model: `glmnet` with `set.seed(12345)`  
+- Input: `LASSO_definitive_ethnicity_simplified.xlsx`  
+- Script: `lasso_survival_pipeline.R`  
+- Output: Desktop PDFs  
+- R version: `r R.version.string`
+
+📬 **Contact**  
+Mauricio Cuello Fredes, Pontificia Universidad Católica de Chile  
+✉️ mcuello@uc.cl
